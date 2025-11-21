@@ -1,5 +1,5 @@
-- name: Container Security Scan with Trivy
-  uses: aquasecurity/trivy-action@v0.67.2
+name: "Container Security Scan with Trivy"
+
 on:
   push:
     branches: [ main ]
@@ -23,7 +23,7 @@ jobs:
         run: docker build -t my-app-image:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@v0.67.2
         with:
           image-ref: 'my-app-image:${{ github.sha }}'
           format: 'sarif'
