@@ -4,8 +4,6 @@ WORKDIR /app
 
 COPY . /app
 
-RUN pip install --no-cache-dir requests
-
 EXPOSE 80
 
 ENV NAME World
