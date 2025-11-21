@@ -1,11 +1,8 @@
-FROM python:3.8-slim
+FROM alpine:latest
 
-WORKDIR /app
+RUN apk update && apk upgrade --no-cache && rm -rf /var/cache/apk/*
 
-COPY . /app
+RUN adduser -D -u 1000 appuser
+USER appuser
 
-EXPOSE 80
-
-ENV NAME World
-
-CMD ["python", "./app.py"]
+CMD ["echo", "Hello World"]
