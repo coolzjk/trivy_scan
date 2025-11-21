@@ -1,7 +1,8 @@
-FROM debian:oldstable
+FROM alpine:3.12.0
 
-RUN apt-get update && apt-get install -y \
-    openssl=1.1.0l \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk update && apk upgrade --no-cache && rm -rf /var/cache/apk/*
 
-CMD ["echo", "This image contains vulnerable packages"]
+RUN adduser -D -u 1000 appuser
+USER appuser
+
+CMD ["echo", "Hello World"]
